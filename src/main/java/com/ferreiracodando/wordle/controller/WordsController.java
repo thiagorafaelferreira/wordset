@@ -27,7 +27,7 @@ public class WordsController {
 
     @GetMapping("/random/{word_size}/{language}")
     public ResponseEntity<String> randomBySize(
-            @PathVariable("word_size") Integer size,
+            @PathVariable("word_size")  Integer size,
             @PathVariable("language") String language) throws IOException {
         return ResponseEntity
                 .ok()
