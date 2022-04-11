@@ -4,7 +4,7 @@ import com.ferreiracodando.wordle.business.LoadWordsFromFileBR;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Collections2;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-@Configuration
+@Service
 public class WordsService {
 
     private final LoadWordsFromFileBR loadWordsFromFile;
