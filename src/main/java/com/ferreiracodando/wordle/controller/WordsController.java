@@ -29,9 +29,10 @@ public class WordsController {
 
     @GetMapping("/words/random/{language}")
     public ResponseEntity<String> random(@PathVariable("language") String language) throws IOException {
-        return ResponseEntity
-                .ok()
-                .body(wordsService.randomWord(language));
+        return ResponseEntity.ok("Tudo funcionando");
+        //        return ResponseEntity
+//                .ok()
+//                .body(wordsService.randomWord(language));
     }
 
     @GetMapping("/words/random/{word_size}/{language}")
