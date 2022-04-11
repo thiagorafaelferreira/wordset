@@ -1,7 +1,7 @@
 package com.ferreiracodando.wordle.controller;
 
 import com.ferreiracodando.wordle.service.WordsService;
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,11 +14,11 @@ import java.io.IOException;
 import java.util.Set;
 
 @RestController
-@AllArgsConstructor
 @Validated
 public class WordsController {
 
-    private final WordsService wordsService;
+    @Autowired
+    private WordsService wordsService;
 
     @GetMapping("/words/length/{language}")
     public ResponseEntity<String> word(@PathVariable("language") @Valid @Max(3) Integer language) throws IOException {
