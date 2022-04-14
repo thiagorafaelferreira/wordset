@@ -1,7 +1,7 @@
 package com.ferreiracodando.wordle.controller;
 
+import com.ferreiracodando.wordle.business.LoadWordsFromFileBR;
 import com.ferreiracodando.wordle.service.WordsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -19,12 +19,8 @@ import java.util.Set;
 @Configuration
 public class WordsController {
 
-    @Autowired
-    private WordsService wordsService;
-
-    public WordsController(WordsService wordsService) {
-        this.wordsService = wordsService;
-    }
+    private LoadWordsFromFileBR loadWordsFromFileBR = new LoadWordsFromFileBR();
+    private WordsService wordsService = new WordsService(loadWordsFromFileBR);
 
     @GetMapping("/words/length/{language}")
     public ResponseEntity<String> word(@PathVariable("language") @Valid @Max(3) Integer language) throws IOException {
