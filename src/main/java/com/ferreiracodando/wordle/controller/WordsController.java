@@ -1,8 +1,7 @@
 package com.ferreiracodando.wordle.controller;
 
-import com.ferreiracodando.wordle.business.LoadWordsFromFileBR;
 import com.ferreiracodando.wordle.service.WordsService;
-import org.springframework.context.annotation.Configuration;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,14 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.util.Set;
 
-@RestController
 @Validated
+@AllArgsConstructor
+@RestController
 @RequestMapping("/v1/words")
-@Configuration
 public class WordsController {
 
-
-    private WordsService wordsService = new WordsService();
+    private final WordsService wordsService;
 
     @GetMapping("/random/{language}")
     public ResponseEntity<String> random(@PathVariable("language") String language) throws IOException {
@@ -58,3 +56,4 @@ public class WordsController {
                 .body(wordsService.generateSetByLetters(lettersRequest, language));
     }
 }
+
